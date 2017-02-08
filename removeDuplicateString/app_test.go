@@ -47,6 +47,7 @@ func TestRemoeSpecifiArray(t *testing.T) {
 	}
 }
 
+// checking if slice a is equal to slice b.
 func testEq(a, b []rune) bool {
 
 	if a == nil && b == nil {

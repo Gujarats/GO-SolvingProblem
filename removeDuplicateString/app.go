@@ -23,6 +23,7 @@ func removeDulicateString(input string) string {
 	return string(splitString)
 }
 
+// removing the data from desired index.
 func removeSpecifiArray(data []rune, index int) []rune {
 	data = append(data[:index], data[index+1:]...)
 	return data
