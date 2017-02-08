@@ -8,6 +8,7 @@ type Node struct {
 func mergeTwoLinkedList(head1 *Node, head2 *Node) *Node {
 	var node3 Node
 	var tempResult Node
+
 	if head1.Value < head2.Value {
 		node3.Value = head1.Value
 		tempResult = Node{Value: head2.Value}
