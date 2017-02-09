@@ -72,11 +72,47 @@ func TestGetDataBalls(t *testing.T) {
 
 }
 
+// test combination
+// combination 8 and 2
+// expected result 28
+func TestGetCombination(t *testing.T) {
+	type testObect struct {
+		TotalNumber int
+		GetNumber   int
+		Expected    int
+	}
+
+	testObjects := []testObect{
+		{8, 2, 28},
+		{5, 1, 5},
+		{3, 2, 3},
+	}
+
+	for _, test := range testObjects {
+		actual := getCombination(test.TotalNumber, test.GetNumber)
+
+		if actual != test.Expected {
+			t.Errorf("Error actual = %v, and Expected = %v", actual, test.Expected)
+		}
+	}
+}
+
 // test case : 5 balls white 3 balls blue
 // chance to get 2 balls white?
 func TestGetChanceSameBalls(t *testing.T) {
 	expected := float32(10 / 28)
 	actual := getProbSameBalls(8, "2W", "5W", "3B")
+
+	if actual != expected {
+		t.Errorf("Error actual = %v, and Expected = %v", actual, expected)
+	}
+}
+
+// test case : 5 balls white 3 balls blue
+// chance to get 2 balls white?
+func TestGetChanceDiffBalls(t *testing.T) {
+	expected := float32(15 / 56)
+	actual := getProbDiffBalls([]string{"1W", "2B"}, 8, "5W", "3B")
 
 	if actual != expected {
 		t.Errorf("Error actual = %v, and Expected = %v", actual, expected)
