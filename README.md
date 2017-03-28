@@ -1,2 +1,2 @@
 # GO-SolvingProblem
-some solving problem on algoritm
+Some solving problem code for fun
