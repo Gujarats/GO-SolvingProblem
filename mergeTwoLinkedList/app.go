@@ -20,7 +20,23 @@ func main() {
 	n2 := Node{Next: &n3, Value: 7}
 	n1 := Node{Next: &n2, Value: 6}
 
-	result := mergeTwoLinkedList2(&node1, &n1)
+	result := mergeTwoLinkedList(&node1, &n1)
+	printNode(result)
+	fmt.Println()
+	fmt.Println("test 2 ")
+
+	node4 = Node{Value: 15}
+	node3 = Node{Next: &node4, Value: 7}
+	node2 = Node{Next: &node3, Value: 2}
+	node1 = Node{Next: &node2, Value: 1}
+
+	// createing linkedlist 2
+	n4 = Node{Value: 10}
+	n3 = Node{Next: &n4, Value: 9}
+	n2 = Node{Next: &n3, Value: 5}
+	n1 = Node{Next: &n2, Value: 3}
+
+	result = mergeTwoLinkedList(&node1, &n1)
 	printNode(result)
 
 }
@@ -38,29 +54,6 @@ func printNode(head *Node) {
 }
 
 func mergeTwoLinkedList(head1 *Node, head2 *Node) *Node {
-	var node3 Node
-	var tempResult Node
-
-	if head1.Value < head2.Value {
-		node3.Value = head1.Value
-		tempResult = Node{Value: head2.Value}
-		node3.Next = &tempResult
-	} else {
-		node3.Value = head2.Value
-		tempResult = Node{Value: head1.Value}
-		node3.Next = &tempResult
-	}
-
-	if head1.Next == nil && head2.Next == nil {
-		return &node3
-	}
-
-	tempResult.Next = mergeTwoLinkedList(head1.Next, head2.Next)
-
-	return &node3
-}
-
-func mergeTwoLinkedList2(head1 *Node, head2 *Node) *Node {
 	var result Node
 
 	if head1.Next == nil {
@@ -73,10 +66,10 @@ func mergeTwoLinkedList2(head1 *Node, head2 *Node) *Node {
 
 	if head1.Value < head2.Value {
 		result.Value = head1.Value
-		result.Next = mergeTwoLinkedList2(head1.Next, head2)
+		result.Next = mergeTwoLinkedList(head1.Next, head2)
 	} else {
 		result.Value = head2.Value
-		result.Next = mergeTwoLinkedList2(head1, head2.Next)
+		result.Next = mergeTwoLinkedList(head1, head2.Next)
 	}
 
 	return &result
