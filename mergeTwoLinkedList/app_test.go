@@ -78,15 +78,3 @@ func isNodeSimilar(head1 *Node, head2 *Node) bool {
 	return result
 
 }
-
-func printNode(head *Node) {
-	fmt.Print(head.Value, " ")
-
-	if head.Next == nil {
-		return
-	}
-
-	printNode(head.Next)
-
-	return
-}
