@@ -13,7 +13,7 @@ func solutions(A []int, B []int, M int, X int, Y int) int {
 	indexLift := 0
 
 	// this variable is used for checking the previous lift if we have visit them
-	var previousLift []int
+	var previousLift map[int]bool
 
 	// check the len of Persons and the len of LiftValue they must be the same
 	if len(A) != len(B) {
@@ -37,8 +37,6 @@ func solutions(A []int, B []int, M int, X int, Y int) int {
 
 					// avoid index of bound
 					if indexLift <= len(B)-1 {
-						fmt.Println("indexLift = ", indexLift)
-						// if the lift value is more than max than return -1
 						if B[indexLift] > M {
 							return -1
 						}
@@ -47,16 +45,14 @@ func solutions(A []int, B []int, M int, X int, Y int) int {
 							break
 						}
 
-						if len(previousLift) == 0 {
-							previousLift = append(previousLift, B[indexLift])
+						if previousLift == nil {
+							previousLift = make(map[int]bool)
+							previousLift[B[indexLift]] = true
 							stopNumber++
 						} else if previousLift != nil {
-							for _, valueLift := range previousLift {
-								if B[indexLift] != valueLift {
-									stopNumber++
-								}
+							if !previousLift[B[indexLift]] {
+								stopNumber++
 							}
-
 						}
 
 						indexLift++
